@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>roshan singh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+
+  <style>
+
+        .sticky {
+          /* position: fixed; */
+          top: 0;
+          width: 100%;
+          /* background-color: #4CAF50; */
+          padding: 0;
+          transition: background-color 2s,padding 2s;
+        
+        }
+        .unsticky {
+          background-color: #333;
+          padding: 20px 0 20px 0;
+          /* position: fixed; */
+          transition: background-color 2s,padding 2s;
+        
+          
+        }
+        
+        /* timeline */
+        * {
+            box-sizing: border-box;
+        }
+        ::after,::before {
+            box-sizing: unset;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color:#616161;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline_container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline_container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #0277bd;
+            border: 4px solid #616161;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #bae5f9;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #bae5f9;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #bae5f9;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #bae5f9 transparent transparent;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .content {
+            padding: 20px 30px;
+            background-color: #bae5f9;
+            font-family:  'Noto Serif', serif;
+            position: relative;
+            border-radius: 6px;
+            overflow-x: hidden;
+        }
+        .content h2 {font-weight: bold;}
+        
+        @media screen and (max-width: 600px) {
+          
+          .timeline::after {
+            left: 31px;
+          }
+        
+
+          
+          .timeline_container {
+            width: 100%;
+            padding-left: 70px;
+            padding-right: 25px;
+          }
+          
+          .timeline_container::before {
+            left: 60px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #bae5f9 transparent transparent;
+          }
+        
+          .left::after, .right::after {
+            left: 15px;
+          }
+          
+           .right {
+            left: 0%;
+          }
+        }
+        
+        /*schedule-start*/
+        .sch li {
+          line-height: 35px;
+          margin-bottom: 25px;
+        }
+        .sch li span{margin-right: 35px;}
+        .morning {background: url('morning.png') no-repeat left;width: 20px;display: inline-block;}
+        .noon {background: url('noon.png') no-repeat left;width: 36px;height:36px;display: inline-block;margin-left: -8px;margin-right:25px; }
+        .evening {background: url('evening.png') no-repeat left;width: 20px;display: inline-block;}
+        .moon {background: url('moon.png') no-repeat left;width: 20px;display: inline-block;}
+        .sch ul{list-style: none;font-family:'Times New Roman', Times, serif;font-size: 24px;color: honeydew}
+        .honeydew {color: honeydew;margin-bottom: 50px}
+        /* schedule-end*/
+        
+        /* carousel-start */
+        .carouselSponse {height: 300px;text-align: center}
+           .carouselSponse img {
+              /* width: 50%; */
+              max-height: 300px;
+          } 
+          .carousel-indicators li{background-color: gray}
+          .carousel-indicators .active {background-color: darkslategray}
+        /* carusel-end */
+        
+        
+        /* collapse-start */
+        .plus {float: right;line-height: 66px;}
+        .ques {line-height: 66px;display:block;padding-left: 10px;padding-right: 10px;color:#006288; background-color:whitesmoke;
+          transition: background-color 1s,color 1s;
+        }
+        .ques:hover{  background-color: #006288;
+          color: whitesmoke;
+          transition: background-color 1s,color 1s;}
+        .quesCollapse {
+          border-left:3px solid #3bcdd8;
+          /* background-color:whitesmoke; */
+          /* padding-left: 10px;padding-right: 10px; */
+        /* color:#006288; */
+        margin-bottom: 20px;
+        
+        font-size: 15px;font-weight: bold; font-family: 'Helvetica', sans-serif;letter-spacing: 0.3px;
+        transition: background-color 1s,color 1s;
+        }
+        /* .quesCollapse :hover {
+          background-color: #006288;
+          color: whitesmoke;
+          transition: background-color 1s,color 1s;
+        } */
+        .quesCollapse a:hover{text-decoration: none}
+        .quesContent {background-color:white;padding: 0px;font-size: 12px;font-weight: normal;position: relative;;color: slategrey;margin-bottom: 20px;}
+        /* collapse end */
+        .social-btn {margin-right:10px;}
+        .social-btn-foot {color:black;margin: 5px;}
+        .btn-sp {margin-bottom: 10px;}
+        .map-responsive{
+            overflow:hidden;
+            padding-bottom:56.25%;
+            position:relative;
+            height:0;
+        }
+        .map-responsive iframe{
+            left:0;
+            top:0;
+            height:100%;
+            width:100%;
+            position:absolute;
+        }
+        </style>
+        </head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="background-color:#4d8eb4">
+
+<nav id="stickyNav" class="unsticky fixed-top navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#" style="margin-left:20px"><img SRC="cu.png" class="img-fluid" alt="CODEUTSAVA" style="">
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar" style="font-weight:100;padding-left: 20px">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#about">ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#schedule">SCHEDULE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sponsor">SPONSOR</a>
+      </li>  
+      <li class="nav-item">
+            <a class="nav-link" href="#faq">FAQ</a>
+          </li>  
+          <li class="nav-item">
+                <a class="nav-link" href="#contact">CONTACT US</a>
+              </li>    
+    </ul>
+  </div>  
+</nav>
+<br>
+
+ <!-- CONTENTS STARTS -->
+ <div id="main" class="container-fluid" style="padding: 0px;margin-top:70px; ">
+        <img class="img-fluid" src="main.jpg" alt="main">      
+</div>
+<div id="about" class="container-fluid" style="background-color: #e1f5fe">
+        <div style="padding-top:30px">
+        <h3 style="text-align:center;margin-bottom:10px;font-family: 'Noto Serif', serif;font-size: 20px;font-weight: bold">GET YOURSELF CHARGED!</h3>
+    </div>
+    <div class="timeline">
+            <div class="timeline_container left">
+              <div class="content">
+                <h2>NIT RAIPUR</h2>
+                <p>The institute is committed to the challenging task of development of technical education by preparing seasoned graduates in highly sophisticated field of engineering and technology.. Development of India as an emerging industrial power .</p>
+              </div>
+            </div>
+            <div class="timeline_container right">
+              <div class="content">
+                <h2>CODEUTASVA 1.0</h2>
+                <p>Be a part of one of the mega computer science event of central India and feel the aura of our motto "Code | Innovate | Celebrate".The event aims at encouraging and creating awareness among students to use the technology for the betterment of society.</p>
+              </div>
+            </div>
+            <div class="timeline_container left">
+              <div class="content">
+                <h2>CODE| INOVATE| CELEBRATE</h2>
+                <p>It will be a two-day event comprising of coding contests, Expert talks and workshops on free and open source softwares and a 28-hour hackathon.</p>
+              </div>
+            </div>
+            <div class="timeline_container right">
+              <div class="content">
+                <h2>PLACEHOLDER FOR SYMMETRY</h2>
+                <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+              </div>
+            </div>
+    
+    
+          </div>
+             
+        </div>
+      <div id="schedule" class="container-fluid" style="padding-top:70px;padding-bottom:70px;background-color:#82b1ff">
+  
+<div id="sch" class="container sch">
+        <div style="text-align:center;margin-bottom: 20px">
+            
+            <i class="far fa-newspaper honeydew fa-4x"></i>
+            <h1 style="font-family:'Noto Serif', serif;font-weight:bold;color:white">SCHEDULE</h1>
+        </div>
+      <div class="row">
+        <ul class="col-md">
+          <li><span class="morning">&nbsp;</span>09:00AM&nbsp;&nbsp;&nbsp;Registrations</li>
+          <li><span class="morning">&nbsp;</span>10:00AM&nbsp;&nbsp;&nbsp;Breakfast</li>
+          <li><span class="morning">&nbsp;</span>11:00AM&nbsp;&nbsp;&nbsp;Kickoff</li>
+          <li><span class="noon">&nbsp;</span>02:00PM&nbsp;&nbsp;&nbsp;Lunch</li>
+          <li><span class="evening">&nbsp;</span>05:00PM&nbsp;&nbsp;&nbsp;Tech Talk</li>
+          <li><span class="moon">&nbsp;</span>08:00PM&nbsp;&nbsp;&nbsp;Dinner</li>
+        </ul>
+          <ul class="col-md">
+          <li><span class="moon">&nbsp;</span>02:00AM&nbsp;&nbsp;&nbsp;Night Party</li>
+          <li ><span class="morning">&nbsp;</span>08:00AM&nbsp;&nbsp;&nbsp;Breakfast</li>
+          <li><span class="noon">&nbsp;</span>12:00PM&nbsp;&nbsp;&nbsp;Lunch</li>
+          <li><span class="evening">&nbsp;</span>05:00PM&nbsp;&nbsp;&nbsp;Hacking stops</li>
+          <li><span class="evening">&nbsp;</span>05:15PM&nbsp;&nbsp;&nbsp;Judging Begins</li>
+          <li><span class="moon">&nbsp;</span>08:00PM&nbsp;&nbsp;&nbsp;Goodbye!</li>
+        </ul>
+      </div>
+      </div>
+            
+           
+    </div>
+      <div id="sponsor" class="container-fluid" style="padding-top:70px;padding-bottom:70px;background-color:white">
+            <div id="spons" class="carousel slide" data-ride="carousel" data-interval="2000">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                      <li data-target="#spons" data-slide-to="0" class="active"></li>
+                      <li data-target="#spons" data-slide-to="1"></li>
+                      <li data-target="#spons" data-slide-to="2"></li>
+                      <li data-target="#spons" data-slide-to="3"></li>
+                      <li data-target="#spons" data-slide-to="4"></li>
+                      <li data-target="#spons" data-slide-to="5"></li>
+                      <li data-target="#spons" data-slide-to="6"></li>
+            
+                    </ul>
+                    
+                    <!-- The slideshow -->
+                    <div class="carouselSponse">
+                      <div class="carousel-item active">
+                        <a href="#">
+                        <img class="img-fluid" src="car/codacy.png" alt="Los Angeles" >
+                      </a>
+                      </div>
+                      <div class="carousel-item">
+                          <a href="#">
+                        <img class="img-fluid" src="car/codeanywhere.png" alt="Chicago">
+                      </a>
+                      </div>
+                      <div class="carousel-item">
+                          <a href="#">
+                        <img class="img-fluid" src="car/digitalocean.png" alt="New York" >
+                      </a>
+                      </div>
+                      <div class="carousel-item">
+                          <a href="#">
+                          <img class="img-fluid" src="car/exotel.png" alt="New York" >
+                        </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="#">
+                            <img class="img-fluid" src="car/nerdy.jpg" alt="New York" >
+                          </a>
+                          </div>
+                          <div class="carousel-item">
+                              <a href="#">
+                              <img class="img-fluid" src="car/temboo.png" alt="New York" >
+                            </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="#">
+                                <img class="img-fluid" src="car/teqip.png" alt="New York" >
+                              </a>
+                              </div>
+                    </div>
+                    
+
+                  </div>
+    </div>
+</div>
+<div id="faq" class="container-fluid" style="padding-top:70px;padding-bottom:70px;background-color:#29b6f6 ">
+  
+<div id="faqCollapse" class="container" style="max-width:630px" >
+  <div>
+    <div id="0" class="quesCollapse">
+      <div>
+    <a href="#qId"  data-toggle="collapse">
+  <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+  </a>
+  <div  id="qId" class="collapse quesContent" data-parent="#faqCollapse">
+    <div style="padding:30px ">
+   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div> 
+  </div>
+  </div>
+  </div>
+  
+  <div id="1" class="quesCollapse">
+    <div>
+      <a href="#qId2"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="qId2" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+  </div>
+    </div>
+  
+    <div id="3" class="quesCollapse">
+        <div>
+      <a href="#qId3"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="qId3" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+    </div>
+    </div>
+  
+    <div id="4" class="quesCollapse">
+        <div>
+      <a href="#qId4"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="qId4" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+    </div>
+    </div>
+  
+    <div id="5" class="quesCollapse">
+        <div>
+      <a href="#qId5"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="qId5" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+    </div>
+    </div>
+  
+    <div id="6" class="quesCollapse">
+        <div>
+      <a href="#dem6"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="dem6" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+    </div>
+    </div>
+  
+    <div id="7" class="quesCollapse">
+        <div>
+      <a href="#qId7"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="qId7" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+    </div>
+    </div>
+  
+    <div id="8" class="quesCollapse">
+        <div>
+      <a href="#qId8"  data-toggle="collapse">
+    <div class="ques">This is place Holder?<i class="fa fa-plus plus"></i></div>
+    </a>
+    <div  id="qId8" class="collapse quesContent" data-parent="#faqCollapse">
+      <div style="padding:30px ">
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div> 
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+</div>
+      <div id="contact" class="container-fluid" style="padding-top:70px;padding-bottom:70px;background-color: whitesmoke">
+            <div style="text-align:center">
+                <h1 style="margin-bottom:40px;font-family:'Noto Serif', serif;"><u>CONTACT US</u></h1>
+                <div class="row">
+                    <div class="col-md container">
+                            <div class=" map-responsive"><div class="gmap_canvas">
+                                <iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=nit%20raipur&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de">pure black gmbh</a></div><style>.mapouter{text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+                            </div>
+    
+                    </div>
+                    <div class="col-md">
+                        <div class="row" style="padding:20px;align-content: center;margin-bottom: 20px">
+                            <div class="col-sm btn-sp">
+                                <a href="#" class="btn btn-info btn-lg "><i class="fab fa-twitter social-btn"></i>Twitter</a>
+                            </div>
+                            <div class="col-sm btn-sp">
+                                    <a href="#" class="btn btn-info btn-lg"><i class="fab fa-github social-btn"></i>Github</a>
+                                </div>
+                                <div class="col-sm btn-sp">
+                                        <a href="#" class="btn btn-info btn-lg"><i class="fab fa-facebook social-btn"></i>Facebook</a>
+                                    <!-- </div>
+                                    <div class="col-md-3"> -->
+                                        </div>
+    
+                        </div>
+                        
+                        <div class="row" style="line-height: 10px">
+                                <div class="col-md" ><h3><u>MANAGEMENT HEAD</u></h3>
+                                <br><br>
+                                <h4>Shubham Amraotkar </h4>
+                                <p>Senior Undergraduate</p>
+                                <p>Information Technology</p>
+                                <p>+91 990 799 5145</p>
+                                <a href="#"><i class="fab fa-twitter social-btn-foot"></i></a>
+                                <a href="#"><i class="fab fa-github social-btn-foot"></i></a>
+                                <a href="#"><i class="fab fa-facebook social-btn-foot"></i></a>
+                            </div>
+                                <div class="col-md">
+                                        <h3><u>MANAGEMENT HEAD</u></h3>
+                                        <br><br>
+                                        <h4>Shubham Amraotkar </h4>
+                                        <p>Senior Undergraduate</p>
+                                        <p>Information Technology</p>
+                                        <p>+91 990 799 5145</p>
+                                        <a href="#"><i class="fab fa-twitter social-btn-foot"></i></a>
+                                        <a href="#"><i class="fab fa-github social-btn-foot"></i></a>
+                                        <a href="#"><i class="fab fa-facebook social-btn-foot"></i></a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div id="foot" class="container-fluid" style="padding-top:40px;padding-bottom:40px;background-color: black;text-align: center;color: darkgrey;font-size: small">
+                Copyright 2016 ITSA NIT Raipur | All Rights Reserved.        
+        </div>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("stickyNav");
+// var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= 50) {
+    navbar.classList.remove("unsticky");
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+    navbar.classList.add("unsticky");
+  }
+}
+
+  function sign(orig){
+    $(orig.target).prev().find(".fa").toggleClass("fa-plus fa-minus");
+  }
+    $(document).ready(function(){
+
+        $(".collapse").on('shown.bs.collapse',sign);
+  
+        $(".collapse").on('hidden.bs.collapse', sign);
+    });
+</script>
+</body>
+</html>
